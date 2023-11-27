@@ -1,0 +1,81 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  padding: 0px 5px;
+  box-shadow: 1px 1px 16px -7px grey;
+  border-bottom: solid grey 0.5px;
+  background-color: #fff;
+}
+@media screen and (min-width: 350px) {
+  .header {
+    padding: 0px 15px;
+  }
+}
+.header h1 {
+  font-size: 22px;
+  color: rgb(255, 128, 0);
+  text-shadow: 1px 1px rgb(96, 93, 93);
+}
+.header .cart-and-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.orders {
+  display: none;
+}
+@media (min-width: 768px) {
+  .orders {
+    display: block;
+    font-weight: bold;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.cart-and-logout .cart-container {
+  position: relative;
+}
+.cart-container .cart-logo {
+  font-size: 35px;
+  color: #000;
+}
+.cart-container .cart-count {
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -3px;
+  right: -5px;
+  background-color: red;
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10px;
+}
+.cart-icon-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.cart-and-logout .logout-btn {
+  background-color: red;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+}
