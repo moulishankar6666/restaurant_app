@@ -1,0 +1,87 @@
+.login-main-container {
+  height: 100vh;
+  background-image: url('https://res.cloudinary.com/dvmkmx7o3/image/upload/v1699695896/tasty-pizza-near-ingredients_23-2147772080_gpylvd.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.Login-card {
+  height: 380px;
+  width: 350px;
+  background-color: rgba(96, 92, 92, 0.902);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.welcome-note {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.restaurant-name {
+  margin-bottom: 20px;
+  color: rgb(255, 128, 0);
+  text-shadow: 1px 1px #fff;
+  text-align: center;
+}
+
+.login-form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.login-form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #fff;
+}
+.login-form input {
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border: solid grey 1.5px;
+}
+.show-password-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+.show-password-container > input {
+  width: 15px;
+}
+.show-password-container > label {
+  margin: 0px;
+}
+.login-button {
+  height: 30px;
+  margin-top: 20px;
+  background-color: rgb(253, 47, 47);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.error-msg {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: red;
+}

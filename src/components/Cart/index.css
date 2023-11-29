@@ -1,0 +1,46 @@
+.restaurant-cart {
+  background-color: #fff;
+  height: 100vh;
+}
+.remove-all-btn-container {
+  display: flex;
+  flex-direction: column;
+}
+.remove-all-button {
+  width: 100px;
+  height: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  align-self: flex-end;
+  margin: 10px 20px 5px 0px;
+  background-color: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+}
+.empty-cart {
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.empty-cart > p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.go-to-home-btn {
+  background-color: green;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}

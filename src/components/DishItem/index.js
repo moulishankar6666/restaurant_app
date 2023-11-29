@@ -4,7 +4,7 @@ import './index.css'
 import CartContext from '../../context/CartContext'
 
 const DishItem = props => {
-  const {dish, changeItemQuantity} = props
+  const {dish, incrementDishQuantity, decrementDishQuantity} = props
 
   return (
     <CartContext.Consumer>
@@ -29,14 +29,14 @@ const DishItem = props => {
                 {dish.dish_Availability ? (
                   <div className="available">
                     <button
-                      onClick={() => changeItemQuantity('-', dish.dish_id)}
+                      onClick={() => decrementDishQuantity(dish.dish_id)}
                       type="button"
                     >
                       -
                     </button>
                     <p>{dish.quantity}</p>
                     <button
-                      onClick={() => changeItemQuantity('+', dish.dish_id)}
+                      onClick={() => incrementDishQuantity(dish.dish_id)}
                       type="button"
                     >
                       +

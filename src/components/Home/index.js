@@ -47,49 +47,17 @@ class Home extends Component {
 
   getMenu = async () => {
     this.setState({status: apiStatus.progress})
-    const options = {method: 'GET'}
     const response = await fetch(
       'https://run.mocky.io/v3/77a7e71b-804a-4fbd-822c-3e365d3482cc',
-      options,
     )
     const data = await response.json()
     const updatedData = this.convertData(data[0])
-
+    console.log(updatedData.table_menu_list)
     this.setState({
-      menuDetails: updatedData,
-      activeMenuCategory: updatedData.table_menu_list[0].menu_category,
+      menuDetails: updatedData.table_menu_list,
+      activeMenuCategory: data[0].table_menu_list[0].menu_category,
       status: apiStatus.success,
     })
-  }
-
-  changeCartCount = (res, id) => {
-    this.setState(prevState => ({
-      menuDetails: {
-        ...prevState.menuDetails,
-        table_menu_list: prevState.menuDetails.table_menu_list.map(each => ({
-          ...each,
-          category_dishes: each.category_dishes.map(eachDish => {
-            if (eachDish.dish_id === id && res === '+') {
-              return {
-                ...eachDish,
-                quantity: eachDish.quantity + 1,
-              }
-            }
-            if (
-              eachDish.dish_id === id &&
-              res !== '+' &&
-              eachDish.quantity > 0
-            ) {
-              return {
-                ...eachDish,
-                quantity: eachDish.quantity - 1,
-              }
-            }
-            return eachDish
-          }),
-        })),
-      },
-    }))
   }
 
   setActiveTab = categoryName => {
@@ -122,26 +90,58 @@ class Home extends Component {
 
   onSuccessView = () => {
     const {menuDetails, activeMenuCategory} = this.state
-    const filteredData = menuDetails.table_menu_list.filter(
+    const filteredData = menuDetails.filter(
       eachMenu => activeMenuCategory === eachMenu.menu_category,
     )
     const dishesList = filteredData[0].category_dishes
+
+    const incrementDishQuantity = id => {
+      this.setState(prevState => ({
+        menuDetails: prevState.menuDetails.map(menuCategory => ({
+          ...menuCategory,
+          category_dishes: menuCategory.category_dishes.map(eachDish => {
+            if (eachDish.dish_id === id) {
+              return {
+                ...eachDish,
+                quantity: eachDish.quantity + 1,
+              }
+            }
+            return eachDish
+          }),
+        })),
+      }))
+    }
+
+    const decrementDishQuantity = id => {
+      this.setState(prevState => ({
+        menuDetails: prevState.menuDetails.map(menuCategory => ({
+          ...menuCategory,
+          category_dishes: menuCategory.category_dishes.map(eachDish => {
+            if (eachDish.dish_id === id && eachDish.quantity > 0) {
+              return {
+                ...eachDish,
+                quantity: eachDish.quantity - 1,
+              }
+            }
+            return eachDish
+          }),
+        })),
+      }))
+    }
+
     return (
       <>
         <nav>
-          <ul>
-            {menuDetails.table_menu_list.map(category =>
-              this.tabsList(category),
-            )}
-          </ul>
+          <ul>{menuDetails.map(category => this.tabsList(category))}</ul>
         </nav>
         <section>
           <ul>
             {dishesList.map(eachDish => (
               <DishItem
                 key={eachDish.dish_id}
-                changeItemQuantity={this.changeCartCount}
                 dish={eachDish}
+                incrementDishQuantity={incrementDishQuantity}
+                decrementDishQuantity={decrementDishQuantity}
               />
             ))}
           </ul>
