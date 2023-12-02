@@ -11,7 +11,6 @@ const CartRoute = () => (
 
       return (
         <div className="restaurant-cart">
-          <Header />
           {cartList.length > 0 ? (
             <section>
               <div className="remove-all-btn-container">

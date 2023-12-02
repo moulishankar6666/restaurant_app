@@ -1,12 +1,14 @@
 import {Component} from 'react'
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import Home from './components/Home'
 import Login from './components/Login'
 import CartRoute from './components/Cart'
 import ProtectedRoute from './components/ProtectedRoute'
 import CartContext from './context/CartContext'
+import NotFound from './components/NotFound'
+import Header from './components/Header'
 
 import './App.css'
 
@@ -84,11 +86,16 @@ class App extends Component {
           decrementCartItemQuantity: this.decrementCartItemQuantity,
         }}
       >
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/cart" component={CartRoute} />
-        </Switch>
+        <>
+          <Header />
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <ProtectedRoute exact path="/" component={Home} />
+            <ProtectedRoute exact path="/cart" component={CartRoute} />
+            <Route exact path="/not-found" component={NotFound} />
+            <Redirect to="/not-found" />
+          </Switch>
+        </>
       </CartContext.Provider>
     )
   }

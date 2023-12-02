@@ -170,12 +170,7 @@ class Home extends Component {
   }
 
   render() {
-    return (
-      <div className="Restaurant-home-page">
-        <Header />
-        {this.renderStatus()}
-      </div>
-    )
+    return <div className="Restaurant-home-page">{this.renderStatus()}</div>
   }
 }
 export default Home
